@@ -99,6 +99,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .language-pill { border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--muted); min-height: 62px; display: flex; align-items: center; gap: 9px; padding: 8px 13px; cursor: pointer; font-family: inherit; font-weight: 600; }
 .language-pill span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 7px; font-size: 11px; background: rgba(255,255,255,.06); }
 .language-pill.active { border-color: var(--blue); color: white; box-shadow: inset 0 0 20px rgba(71,121,255,.08); }
+.language-pill.locked { opacity: .38; cursor: not-allowed; }
+.scratch { color: #ffb33b; }
 .py { color: #6da7ff; }.js { color: #ffe269; }.html { color: #ff9769; }.java { color: #ff816d; }.cpp { color: #72a9ff; }.csharp { color: #a78aff; }
 .lesson-panel { min-height: 240px; display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: 40px; position: relative; padding: 35px 40px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
 .lesson-panel h3 { font-family: "Space Grotesk"; font-size: 27px; margin: 10px 0 4px; }
@@ -128,6 +130,28 @@ footer { padding: 30px 0; }
 .modal-close { float: right; border: 0; background: none; color: var(--muted); font-size: 28px; cursor: pointer; }
 .modal-result { min-height: 24px; color: #7fe0ae; }
 
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 430px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.pricing-card.popular { border-color: var(--blue); box-shadow: 0 20px 60px rgba(71,121,255,.12); }
+.popular-label { position: absolute; right: 18px; top: -12px; padding: 5px 10px; border-radius: 20px; background: var(--blue); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.plan-name { color: var(--cyan); font-family: "Space Grotesk"; font-size: 22px; font-weight: 700; }
+.plan-price { display: flex; flex-direction: column; margin: 20px 0 5px; }
+.plan-price strong { font-family: "Space Grotesk"; font-size: 32px; }
+.plan-price span { color: var(--muted); font-size: 12px; }
+.pricing-card p { min-height: 72px; color: var(--muted); font-size: 14px; }
+.pricing-card ul { flex: 1; margin: 0 0 22px; padding-left: 18px; color: #c8d1e5; font-size: 14px; }
+.pricing-card li { margin-bottom: 8px; }
+.pricing-card .button { width: 100%; }
+
 @media (max-width: 900px) {
   .hero-grid, .practice-grid { grid-template-columns: 1fr; gap: 45px; }
   .hero-grid { padding-block: 70px; }
@@ -135,6 +159,7 @@ footer { padding: 30px 0; }
   .path-grid { grid-template-columns: 1fr 1fr; }
   .language-list { grid-template-columns: repeat(3, 1fr); }
   .practice-grid { gap: 35px; }
+  .pricing-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 650px) {
   .container { width: min(100% - 28px, 1120px); }
