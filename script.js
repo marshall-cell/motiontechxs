@@ -43,42 +43,6 @@ const lessons = {
   }
 };
 
-const planLanguages = {
-  starter: ["Scratch"],
-  advanced: ["Scratch", "Python", "JavaScript", "HTML & CSS"],
-  pro: ["Scratch", "Python", "JavaScript", "HTML & CSS", "Java", "C++", "C#"]
-};
-
-function applyPlanAccess(plan) {
-  const languages = planLanguages[plan] || [];
-  document.querySelectorAll(".language-pill").forEach((pill) => {
-    const allowed = languages.includes(pill.dataset.language);
-    pill.disabled = !allowed;
-    pill.classList.toggle("locked", !allowed);
-    pill.title = allowed ? "" : "Requires a higher CODEX plan";
-  });
-
-  document.querySelectorAll(".language-pill:not(.locked)").forEach((pill) => {
-    if (pill.dataset.language === (languages.includes("Scratch") ? "Scratch" : languages[0])) {
-      pill.click();
-      return;
-    }
-  });
-}
-
-const paymentParams = new URLSearchParams(window.location.search);
-const returnedPackage = paymentParams.get("package");
-const paymentStatus = paymentParams.get("payment");
-const savedPlan = localStorage.getItem("codex-plan");
-
-if (returnedPackage && planLanguages[returnedPackage] && paymentStatus === "return") {
-  localStorage.setItem("codex-plan", returnedPackage);
-  applyPlanAccess(returnedPackage);
-  alert(`Welcome to the CODEX ${returnedPackage[0].toUpperCase() + returnedPackage.slice(1)} plan! Your payment return is confirmed, but your payment should be reviewed before purchase access is finalized.`);
-} else {
-  applyPlanAccess(savedPlan || "starter");
-}
-
 const menuButton = document.querySelector(".menu-button");
 const navLinks = document.querySelector(".nav-links");
 
